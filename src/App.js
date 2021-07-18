@@ -24,4 +24,6 @@ function App() {
 export default App;
 
 const AppBody = styled.div`
+height: 100vh;    
+padding-top: 60px;
 `
