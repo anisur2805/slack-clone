@@ -2,6 +2,5 @@
 
 ### Using::
 1. Redux
-2. React Router DOM
-3. Firebase/ Hooks
-4. Styled Component
+2. Firebase Hooks
+3. Styled Component
