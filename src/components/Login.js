@@ -2,19 +2,16 @@ import { Button } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
 import { auth, provider } from "../firebase";
-
+import logo from "../logo.png";
 function Login() {
     const singIn = (e) => {
         e.preventDefault();
-        auth.signInWithPopup(provider).catch((error) => alert(error.message))
+        auth.signInWithPopup(provider).catch((error) => alert(error.message));
     };
     return (
         <LoginContainer>
             <LoginInnerContent>
-                <img
-                    src="https://cdn.mos.cms.futurecdn.net/SDDw7CnuoUGax6x9mTo7dd.jpg"
-                    alt="Slack"
-                />
+                <img src={logo} alt="Slack" />
                 <h4>Anisur Rahman</h4>
                 <p>anisur2805.com</p>
                 <Button onClick={singIn}>Sing with Google</Button>

@@ -8,27 +8,24 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 
 function Header() {
-    const [user] = useAuthState(auth);
+    const [ user ] = useAuthState(auth);
     return (
         <HeaderContainer>
-            {/* Header Left */}
             <HeaderLeft>
                 <HeaderAvatar
                     // TODO: Add onClick
-                    onClick={() => auth.signOut()}
-                    alt={user?.displayName}
-                    src={user?.photoURL}
+                    onClick={ () => auth.signOut() }
+                    alt={ user?.displayName }
+                    src={ user?.photoURL }
                 />
                 <AccessTimeIcon />
             </HeaderLeft>
 
-            {/* Header Search */}
             <HeaderSearch>
                 <SearchIcon />
                 <input placeholder="Search here" />
             </HeaderSearch>
 
-            {/* Header Right */}
             <HeaderRight>
                 <HelpOutlineIcon />
             </HeaderRight>

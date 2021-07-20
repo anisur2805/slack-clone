@@ -25,9 +25,6 @@ function Chat() {
       .orderBy("timestamp", "asc")
   );
 
-  console.log(roomDetails?.data());
-  console.log(roomMessages);
-
   useEffect(() => {
     chatRef?.current.scrollIntoView({
       behavior: "smooth",
@@ -36,46 +33,47 @@ function Chat() {
 
   return (
     <ChatContainer>
-          <>
-            <Header>
-              <HeaderLeft>
-                <h4>
-                  <strong>#{ roomDetails?.data().name }</strong>
-                </h4>
-                <StarBorderOutlinedIcon />
-              </HeaderLeft>
-              <HeaderRight>
-                <p>
-                  <InfoOutlinedIcon /> Details
-                </p>
-              </HeaderRight>
-            </Header>
+      <>
+        <Header>
+          <HeaderLeft>
+            <h4>
+              <strong>#{ roomDetails?.data().name }</strong>
+            </h4>
+            <StarBorderOutlinedIcon />
+          </HeaderLeft>
+          <HeaderRight>
+            <p>
+              <InfoOutlinedIcon /> Details
+            </p>
+          </HeaderRight>
+        </Header>
 
-            <ChatMessage>
-              { roomMessages?.docs.map((doc) => {
-                const { message, user, userImage, timestamp } =
-                  doc.data();
+        <ChatMessage>
+          { roomMessages?.docs.map((doc) => {
+            const { message, user, userImage, timestamp } =
+              doc.data();
 
-                return (
-                  <Message
-                    key={ doc.id }
-                    message={ message }
-                    timestamp={ timestamp }
-                    user={ user }
-                    userImage={ userImage }
-                  />
-                );
-              }) }
+            return (
+              <Message
+                key={ doc.id }
+                message={ message }
+                timestamp={ timestamp }
+                user={ user }
+                userImage={ userImage }
+              />
+            );
+          }) }
 
-              <ChatBottom ref={ chatRef } />
-            </ChatMessage>
+          <ChatBottom ref={ chatRef } />
+        </ChatMessage>
 
-            <ChatInput
-              chatRef={ chatRef }
-              channelName={ roomDetails?.data().name }
-              channelId={ roomId }
-            />
-          </>
+        <ChatInput
+          chatRef={ chatRef }
+          channelName={ roomDetails?.data().name }
+          channelId={ roomId }
+        />
+
+      </>
     </ChatContainer>
   );
 }
@@ -86,7 +84,7 @@ const ChatContainer = styled.div`
     flex: 0.7;
     flex-grow: 1;
     overflow-y: scroll;
-    overflow-y: auto;
+    // overflow-y: auto;
     // margin-top: 60px;
 `;
 const Header = styled.div`
@@ -95,6 +93,7 @@ const Header = styled.div`
     padding: 20px;
     border-bottom: 1px solid lightgray;
 `;
+
 const HeaderLeft = styled.div`
     display: flex;
     align-items: center;
@@ -110,6 +109,7 @@ const HeaderLeft = styled.div`
         font-size: 18px;
     }
 `;
+
 const HeaderRight = styled.div`
     > p {
         display: flex;
@@ -126,5 +126,5 @@ const HeaderRight = styled.div`
 const ChatMessage = styled.div``;
 
 const ChatBottom = styled.div`
-    padding-bottom: 20px;
+    padding-bottom: 100px;
 `;
